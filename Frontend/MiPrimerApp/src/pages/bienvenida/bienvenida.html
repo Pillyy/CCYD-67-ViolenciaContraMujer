@@ -13,15 +13,35 @@
   <ion-slides pager>
 
     <ion-slide style="background-color: #FFDF00">
-      <h2>¡Hola! preparate para la Victoria</h2>
+      <h2>¡Hola! preparate para la Victoria.</h2>
+      <p>Para empezar desliza hacia la izquierda.</p>
+      <br>
+      <img src="assets/imgs/swipe-left.png" alt="Desliza hacia la izquierda">
     </ion-slide>
   
     <ion-slide style="background-color: #FFDF00">
+      <h2>¡Muy bién! ya estas aprendiendo a navegar por la app</h2>
       <h2>Con esta app aprenderas jugando con cuentos en los que tus decisiones cambiaran la historia</h2>
     </ion-slide>
   
     <ion-slide style="background-color: #FFDF00">
-      <button ion-button color="light" (click)="irPagina('p')" >Empecemos</button>
+
+      <h2>Toca la nube de decisión para responder las preguntas que se te presentarán en cada historia</h2>
+      <ion-fab center >
+
+        <button ion-fab color="danger"><ion-icon name="chatbubbles"></ion-icon></button>
+
+          <ion-fab-list side="top">
+            <button ion-button small color="dark">Segundo intento</button>
+          </ion-fab-list>
+          <ion-fab-list side="left">
+            <button ion-button small color="light">Hacer nada</button>
+          </ion-fab-list>
+          <ion-fab-list side="right">
+            <button ion-button small color="primary" (click)="irPagina('p')">Ya aprendí</button>
+          </ion-fab-list>
+        </ion-fab>
+      
     </ion-slide>
   
   </ion-slides>
