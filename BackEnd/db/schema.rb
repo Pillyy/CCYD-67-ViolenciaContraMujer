@@ -10,10 +10,46 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_24_171639) do
+ActiveRecord::Schema.define(version: 2018_10_25_172835) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "advances", force: :cascade do |t|
+    t.bigint "profile_id"
+    t.bigint "history_id"
+    t.integer "score"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["history_id"], name: "index_advances_on_history_id"
+    t.index ["profile_id"], name: "index_advances_on_profile_id"
+  end
+
+  create_table "answers_alterantives", force: :cascade do |t|
+    t.bigint "history_id"
+    t.string "message"
+    t.integer "score"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["history_id"], name: "index_answers_alterantives_on_history_id"
+  end
+
+  create_table "histories", force: :cascade do |t|
+    t.string "name"
+    t.text "picture"
+    t.string "question"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "history_cards", force: :cascade do |t|
+    t.bigint "history_id"
+    t.text "picture"
+    t.integer "order"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["history_id"], name: "index_history_cards_on_history_id"
+  end
 
   create_table "profiles", force: :cascade do |t|
     t.string "name"
@@ -24,4 +60,8 @@ ActiveRecord::Schema.define(version: 2018_10_24_171639) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "advances", "histories"
+  add_foreign_key "advances", "profiles"
+  add_foreign_key "answers_alterantives", "histories"
+  add_foreign_key "history_cards", "histories"
 end
